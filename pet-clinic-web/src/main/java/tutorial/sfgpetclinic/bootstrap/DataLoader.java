@@ -2,24 +2,21 @@ package tutorial.sfgpetclinic.bootstrap;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import services.OwnerService;
-import services.VetService;
-import services.map.OwnerServiceMap;
-import services.map.VetServiceMap;
-import tutorial.sfgpetclinic.model.Owner;
-import tutorial.sfgpetclinic.model.Vet;
 
-import java.util.Set;
+import tutorial.sfgpetclinic.model.*;
+import tutorial.sfgpetclinic.model.services.OwnerService;
+import tutorial.sfgpetclinic.model.services.VetService;
+
 
 @Component
 public class DataLoader implements CommandLineRunner {
 
-    private final OwnerService owmerService;
+    private final OwnerService ownerService;
     private final VetService vetService;
 
-    public DataLoader() {
-        owmerService = new OwnerServiceMap();
-        vetService = new VetServiceMap();
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     @Override
@@ -30,14 +27,14 @@ public class DataLoader implements CommandLineRunner {
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
 
-        owmerService.save(owner1);
+        ownerService.save(owner1);
 
         Owner owner2 = new Owner();
         owner2.setId(2L);
         owner2.setFirstName("Fiona");
         owner2.setLastName("Glenanne");
 
-        owmerService.save(owner2);
+        ownerService.save(owner2);
 
         System.out.println("Loaded owners....");
 
