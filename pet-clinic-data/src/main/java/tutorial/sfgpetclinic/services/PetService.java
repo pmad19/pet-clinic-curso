@@ -1,4 +1,4 @@
-package services;
+package tutorial.sfgpetclinic.services;
 
 import tutorial.sfgpetclinic.model.Pet;
 
